@@ -1,0 +1,162 @@
+/*
+ Localizable.strings
+ loginTest
+ 
+ Created by alumnos on 9/10/17.
+ Copyright © 2017 Profe. All rights reserved.
+ */
+
+//LANGUAGES
+
+"en"="English";
+"es"="Español";
+"base"="Base";
+"ca"="Catalan";
+
+//LOGIN
+"email"="Email";
+"password"="contrasenya";
+"areyouregister"="Estàs registrat?";
+"forgetPass"="Has oblidat la teva contrasenya?";
+"enter"="ENTRAR";
+"notAccount"="No tens un compte?";
+"register"="Registre";
+"correctLogin"="Login correcte";
+"succesLogin"="T'has loguejat correctament";
+
+//REGISTER
+"repeatPassword"="Repeteix la contrassenya";
+"back"="esquena";
+
+//RECOVER PASSWORD
+"ok"="OK";
+"changePassword"="Canvia la contrasenya";
+"passwordChanged"="S'ha canviat la contrasenya";
+
+//ALERTS
+"emptyPassword"="Contrasenya buida";
+"wrongRepeatPassword"="Les contrasenyes no coincideixen";
+"wrongFormat"="Format de correu electrònic no vàlid";
+"emptyTlf"="Telèfon buit";
+"wrongTlf"="Format de telèfon no vàlid";
+
+"wrongEmail"="Correu electrònic incorrecte. No pre-registrat";
+"allFieldsRequired"="Tots els camps són obligatoris";
+"lengthPassword"="La contrasenya ha de tenir entre 5 i 12 caràcters.";
+"correctLogin"="Corregeix l'inici de sessió";
+
+"permissionSettings" = "Cal acceptar els permisos des ajustos";
+
+//EVENTS
+
+"events"="Esdeveniments";
+"event"="Esdeveniment";
+"joboffers"="Oferta de treball";
+"joboffer"="Ofertes de treball";
+"notifications"="Notifications";
+"notification"="Notificació";
+"news"="Notícies";
+"notice"="Avís";
+"search"="Cerca";
+"typeEvent"="Quin tipus d'esdeveniment va a crear?";
+"whatGroups"="Indiqueu els grups que haurien de rebre el vostre esdeveniment";
+"addTitle"="Afegiu el títol";
+"addDescription"="Afegiu la descripció";
+"wantImage"="Voleu afegir una imatge?";
+"tooLocalization"="També podeu afegir una ubicació";
+"addWeb"="Vols afegir un web?";
+"createEvent"="Crea un esdeveniment";
+"delete"="Suprimeix";
+"descriptionInfo"="Doneu-nos més informació del teu esdeveniment, tria un títol i una descripció del teu esdeveniment";
+"add"="Afegeix";
+"uploadImage"="Penja la imatge";
+"eventCreated"="Esdeveniment creat";
+"eventCreatedSuccess"="L'esdeveniment s'ha creat correctament";
+"infoTitle" = "Indica'ns el títol i descripció del teu esdeveniment.";
+"cancel" = "cancel · lar";
+"optional" = "*Opcional";
+"all" = "Tots";
+"events"= "Esdeveniments";
+"jobOffert" = "Ofertes de treball";
+"notifi" = "Notificacions";
+"news"= "Notícies";
+"cancel"= "Cancel";
+"deleteEvent"="Delete event";
+"sureDeleteEvent"="¿Segur que vols eliminar l'esdeveniment?";
+"delete"="Esborrar";
+
+//MENU
+
+"menu"="Menú";
+
+//LOCALIZACIÓN
+"localizationTitle" = "Ubicació";
+"howToGo" = "Com arribar al CEV";
+"accessLocal" = "Accedint al teu localització";
+
+//WELCOME
+"Congratulations" = "Enhorabona, t'has registrat!";
+"nowYouAreAlumni" = "Ara ets part dels alumnes";
+"changePhoto" = "Canvieu la vostra foto de perfil";
+"alwaysChange" = "Sempre podeu canviar-lo des de la configuració del vostre perfil";
+"changeButton" = "Canvia la foto";
+"notchangeBtn" = "Ometi aquest pas";
+"welcome" = "Benvinguda";
+
+//PROFILE
+"defaulDesc" = "Hola, sóc un alumne de l'escola superior CEV, actualment segueixo cursant el meu grau i aspiro a arribar a entrar en una empresa on pugui millorar com a professional.";
+"changePhoto" = "Canviar foto";
+"fullName" = "Nom";
+"username" = "Nom d'usuari";
+"passSettigns" = "Contrasenya";
+"MyPhone" = "Nombre de telèfon";
+"privacitySettings" = "Privadesa";
+"emailSettings" = "Adreça de correu electrònic";
+"descriptSettings" = "Descripció";
+"localizSettings" = "Vaig permetre meu localització";
+"phoneSettings" = "Vaig permetre el meu número de telèfon";
+"localSettings"= "Comparteix la meva deslocalització";
+"doneBt" = "Fet";
+"alertExit"="Éxit";
+"saveChangeAlert"="Canvis guardats";
+
+"yes" = "Sí";
+"no" = "No";
+
+"notChangesDone" = "No s'han pogut realitzar els canvis";
+"edit"="Editar";
+
+//USERS
+
+"notFriends"="No tens amics";
+
+
+//ALERT CONTRASEÑA
+"changePass"="Canviar contrasenya";
+"change"="Canvia la contrasenya per una nova";
+"lessPass"="Contrasenya antiga";
+"newPass"="Contrasenya nova";
+"repitPass"="Repetir contrasenya nova";
+"cancel"="Cancel";
+"oldPass" = "La contrasenya antiga no és vàlida";
+
+//LIST USERS
+"all"="Tots";
+"groups"="Grups";
+"friend"="Amics";
+"send"="Sol·licituds";
+"users"="Usuaris";
+
+//DETAIL USER
+"myName" = "Nom";
+"myDescrip" = "Descripció";
+"myMail" = "Email";
+"myNum" = "Número de telèfon";
+"myLoc" = "ubicació";
+"myUserName" = "Nom d'usuari";
+"addFriend" = "Afegir als meus amics";
+
+//COMENTARIOS
+"createdComment" = "Comentari creat!";
+
+

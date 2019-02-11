@@ -1,0 +1,157 @@
+/* 
+  Localizable.strings
+  loginTest
+
+  Created by alumnos on 9/10/17.
+  Copyright © 2017 Profe. All rights reserved.
+*/
+
+//LANGUAGES
+
+"en"="English";
+"es"="Español";
+"base"="Base";
+"ca"="Catalan";
+
+//LOGIN
+"email"="E-mail";
+"password"="Contraseña";
+"areyouregister"="¿Estas Registrado?";
+"forgetPass"="¿Has olvidado tu contraseña?";
+"enter"="ENTRAR";
+"notAccount"="¿No tienes cuenta?";
+"register"="REGÍSTRATE";
+"correctLogin"="Login correcto";
+"succesLogin"="Te has logueado correctamente";
+
+//REGISTER
+"repeatPassword"="Repetir contraseña";
+"back"="Volver";
+
+//RECOVER PASSWORD
+"ok"="Aceptar";
+"changePassword"="Cambiar contraseña";
+"passwordChanged"="Contraseña cambiada";
+
+//ALERTS
+"emptyPassword"="Contraseña vacía";
+"wrongRepeatPassword"="Las contraseñas no coinciden";
+"wrongFormat"="Formato de e-mail no válido";
+"emptyTlf"="Telefono Vacio";
+"wrongTlf"="Formato de teléfono no válido";
+"wrongEmail"="Email incorrecto, no se encuentra pre-registrado";
+"allFieldsRequired"="Todos los campos son necesarios";
+"lengthPassword"="La contraseña debe estar comprendida entre 5 y 12 caracteres";
+"correctLogin"="Login correcto";
+
+"permissionSettings" = "Es necesario aceptar los permisos desde ajustes";
+
+//EVENTS
+
+"events"="Eventos";
+"event"="Evento";
+"joboffers"="Ofertas de trabajo";
+"joboffer"="Oferta de trabajo";
+"notifications"="Notificaciones";
+"notification"="Notificación";
+"news"="Noticias";
+"notice"="Noticia";
+"search"="Buscar";
+"typeEvent"="¿Qué tipo de evento vas a crear?";
+"whatGroups"="Indica los grupos que deben recibir tu evento";
+"addTitle"="Añade el título";
+"addDescription"="Añade la descripción";
+"wantImage"="¿Quieres añadir una imagen?";
+"tooLocalization"="También puedes agregar una ubicación";
+"addWeb"="¿Quieres añadir una web?";
+"createEvent"="Crear evento";
+"delete"="Eliminar";
+"eventCreated"="Evento creado";
+"eventCreatedSuccess"="El evento ha sido creado con éxito";
+"add"="Añadir";
+"uploadImage"="Subir imagen";
+"infoTitle" = "Indícanos el título y descripción de tu evento.";
+"cancel" = "Cancelar";
+"optional" = "*Opcional";
+"all" = "Todos";
+"events"="Eventos";
+"jobOffert" = "Ofertas de trabajo";
+"notifi" = "Notificaciones";
+"news"="Noticias";
+"cancel"="Cancelar";
+"deleteEvent"="Borrar evento";
+"sureDeleteEvent"="¿Seguro que quieres borrar el evento?";
+"delete"="Borrar";
+
+//MENU
+
+"menu"="Menu";
+
+//LOCALIZACIÓN
+"localizationTitle" = "Localización";
+"howToGo" = "Cómo llegar al CEV";
+"accessLocal" = "Accediendo a tu localización";
+
+//WELCOME
+"Congratulations" = "¡Enhorabuena, te has registrado! Ahora formas parte de Alumni";
+"nowYouAreAlumni" = "Ahora formas parte de Alumni";
+"changePhoto" = "Cambia tu foto de perfil";
+"alwaysChange" = "Siempre podras cambiarla desde tu perfil";
+"changeButton" = "Cambiar foto";
+"notchangeBtn" = "Omitir este paso";
+"welcome" = "Bienvenido";
+
+//PROFILE
+"defaulDesc" = "Hola, soy un alumno de la escuela superior CEV, actualmente sigo cursando mi grado y aspiro a llegar a entrar en una empresa donde pueda mejorar como profesional.";
+"changePhoto" = "Cambiar foto";
+"fullName" = "Nombre";
+"username" = "Nombre de usuario";
+"passSettigns" = "Contraseña";
+"MyPhone" = "Número de teléfono";
+"privacitySettings" = "Privacidad";
+"emailSettings" = "Dirección de correo electrónico";
+"descriptSettings" = "Descripción";
+"localizSettings" = "Compartir localización";
+"phoneSettings"= "Compartir teléfono";
+"localSettings"= "Compartir mi loaclización";
+"doneBt" = "Hecho";
+"alertExit"="éxito";
+"saveChangeAlert"="Cambios guardados";
+"yes" = "Sí";
+"no" = "No";
+"notChangesDone" = "No se han podido realizar los cambios";
+"edit"="Editar";
+
+//USERS
+
+"notFriends"="No tienes amigos";
+
+
+//ALERT CONTRASEÑA
+"changePass"="Cambiar contraseña";
+"change"="Cambia tu contraseña por una nueva";
+"lessPass"="Contraseña antigua";
+"newPass"="Contraseña nueva";
+"repitPass"="Repetir contraseña nueva";
+"cancel"="Cancelar";
+"oldPass" = "La contraseña antigua no es válida";
+
+//LIST USERS
+"all"="Todos";
+"groups"="Grupos";
+"friend"="Amigos";
+"send"="Solicitudes";
+"users"="Usuarios";
+
+
+//DETAIL USER
+"myName" = "Nombre";
+"myDescrip" = "Descripción";
+"myMail" = "Email";
+"myNum" = "Numero de telefono";
+"myLoc" = "Ubicación";
+"myUserName" = "Nombre de usario";
+"addFriend" = "Añadir a mis amigos";
+
+//COMENTARIOS
+"createdComment" = "Comentario creado!";

@@ -1,0 +1,157 @@
+/* 
+  Localizable.strings
+  loginTest
+
+  Created by alumnos on 9/10/17.
+  Copyright © 2017 Profe. All rights reserved.
+*/
+
+//LANGUAGES
+
+"en"="English";
+"es"="Español";
+"base"="Base";
+"ca"="Catalan";
+
+//LOGIN
+"email"="E-mail";
+"password"="Password";
+"areyouregister"="Are you registered?";
+"forgetPass"="Forgot your password?";
+"enter"="ENTER";
+"notAccount"="Don't you have an account?";
+"register"="REGISTER";
+"correctLogin"="Correct Login";
+"succesLogin"="You have logged in correctly";
+
+//REGISTER
+"repeatPassword"="Repeat password";
+"back"="Back";
+
+//RECOVER PASSWORD
+"ok"="OK";
+"changePassword"="Change password";
+"passwordChanged"="Password changed";
+
+//ALERTS
+"emptyPassword"="Empty password";
+"wrongRepeatPassword"="The passwords don't match";
+"wrongFormat"="Invalid e-mail format";
+"emptyTlf"="Empty phone";
+"wrongTlf"="Invalid phone format";
+"wrongEmail"="Incorrect e-mail. Not pre-registered";
+"allFieldsRequired"="All fields are required";
+"lengthPassword"="The password must be between 5 and 12 characters long.";
+"correctLogin"="Correct login";
+
+"permissionSettings" = "Permissions must be accepted from settings";
+
+//EVENTS
+
+"events"="Events";
+"event"="Event";
+"joboffers"="Job offers";
+"joboffer"="Job offer";
+"notifications"="Notifications";
+"notification"="Notification";
+"news"="News";
+"notice"="Notice";
+"search"="Search";
+"typeEvent"="What kind of event are you going to create?";
+"whatGroups"="Indicate the groups that should receive your event";
+"addTitle"="Add the title";
+"addDescription"="Add the description";
+"wantImage"="Want to add an image?";
+"addWeb"="Want to add a website?";
+"tooLocalization"="You can also add a location";
+"createEvent"="Create event";
+"delete"="Delete";
+"add"="Add";
+"uploadImage"="Upload image";
+"eventCreated"="Event created";
+"eventCreatedSuccess"="The event has been successfully created";
+"infoTitle" = "Tell us the title and description of your event.";
+"cancel" = "cancel";
+"optional" = "*Optional";
+"all" = "All";
+"events"= "Events";
+"jobOffert" = "Job offer";
+"notifi" = "Notifications";
+"news"= "News";
+"cancel"= "Cancel";
+"deleteEvent"="Delete event";
+"sureDeleteEvent"="Are you sure you want to delete the event?";
+"delete"="Delete";
+
+//MENU
+
+"menu"="Menu";
+
+//ALERT CONTRASEÑA
+"changePass"="Change password";
+"change"="Change your password to a new one.";
+"lessPass"="Old password";
+"newPass"="new password";
+"repitPass"="Repeat new password";
+"cancel"="Cancel";
+"oldPass" = "Old password is invalid";
+
+//LOCATION
+"localizationTitle" = "Location";
+"howToGo" = "How to go to CEV";
+"accessLocal" = "Accessing your location";
+
+//WELCOME
+"Congratulations" = "Congratulations, you've registered!";
+"nowYouAreAlumni" = "Now you are part of Alumni";
+"changePhoto" = "Change your profile photo";
+"alwaysChange" = "You can always change it from settings in your profile";
+"changeButton" = "Change photo";
+"notchangeBtn" = "Skip this step";
+"welcome" = "Welcome";
+
+//PROFILE
+"defaulDesc" =  "Hi, I am a student of the CEV high school, currently I am still studying my degree and aspire to enter a company where I can improve as a professional.";
+"changePhoto" = "Change photo";
+"fullName" = "Name";
+"username" = "Username";
+"passSettigns" = "Password";
+"MyPhone" = "Phone number";
+"privacitySettings" = "Privacity";
+"emailSettings" = "Email address";
+"descriptSettings" = "description";
+"localizSettings" = "I allowed my location.";
+"phoneSettings" = " I allowed my phone number ";
+"doneBt" = "Done";
+"alertExit"="Success";
+"saveChangeAlert"="Saved changes";
+
+"yes" = "Yes";
+"no" = "No";
+
+"notChangesDone" = "Unable to make changes";
+"edit"="Edit";
+
+//USERS
+
+"notFriends"="You have no friends";
+
+//LIST USERS
+"all"="All";
+"groups"="Groups";
+"friend"="Friends";
+"send"="Requests";
+"users"="Users";
+
+//DETAIL USER
+"myName" = "Name";
+"myDescrip" = "Description";
+"myMail" = "Email";
+"myNum" = "Phone number";
+"myLoc" = "Location";
+"myUserName" = "Username";
+"addFriend" = "Add to my friends";
+
+//COMENTARIOS
+"createdComment" = "Comment created!";
+
