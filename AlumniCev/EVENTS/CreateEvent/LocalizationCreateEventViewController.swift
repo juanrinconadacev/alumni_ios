@@ -182,10 +182,10 @@ class LocalizationCreateEventViewController: UIViewController, MKMapViewDelegate
         let latDelta:CLLocationDegrees = 0.01
         let longDelta:CLLocationDegrees = 0.01
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        let span:MKCoordinateSpan = MKCoordinateSpan.init(latitudeDelta: latDelta, longitudeDelta: longDelta)
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
         
         map.setRegion(region, animated: true)
         

@@ -67,7 +67,7 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
                 let alert = UIAlertController(title: "Localización necesaria", message: "Es necesario acceder a la localización", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
-                    UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: nil
+                    UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
                     )
                 }))
                 
@@ -90,7 +90,7 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
             let alert = UIAlertController(title: "Localización necesaria", message: "Es necesario acceder a la localización", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
-                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: nil
+                UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
                 )
             }))
             
@@ -128,10 +128,10 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
         let latDelta:CLLocationDegrees = 0.01
         let longDelta:CLLocationDegrees = 0.01
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        let span:MKCoordinateSpan = MKCoordinateSpan.init(latitudeDelta: latDelta, longitudeDelta: longDelta)
         
         
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
         
         mapRoute.setRegion(region, animated: true)
     }
@@ -159,7 +159,7 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
         let origen = MKMapItem(placemark: MKPlacemark(coordinate: coordenadasOrigen))
         let destino = MKMapItem(placemark: MKPlacemark(coordinate: coordenadasDestino))
         
-        let peticion = MKDirectionsRequest()
+        let peticion = MKDirections.Request()
         peticion.transportType = self.transportType!
         
         peticion.source = origen
@@ -187,7 +187,7 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
                 self.mapRoute.addAnnotation(self.userAnnotation)
                 
                 // rute
-                self.mapRoute.add((response?.routes[0].polyline)!)
+                self.mapRoute.addOverlay((response?.routes[0].polyline)!)
                 self.zoomToPolyLine(map: self.mapRoute, polyLine: (response?.routes[0].polyline)!, animated: true)
                 
             }
@@ -224,7 +224,7 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
         regionRect.origin.x -= wPadding / 2
         regionRect.origin.y -= hPadding / 2
         
-        map.setRegion(MKCoordinateRegionForMapRect(regionRect), animated: true)
+        map.setRegion(MKCoordinateRegion.init(regionRect), animated: true)
         
     }
     
@@ -314,4 +314,9 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
         manager.stopUpdatingLocation()
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

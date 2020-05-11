@@ -35,7 +35,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         usersTable.estimatedRowHeight = 88
-        usersTable.rowHeight = UITableViewAutomaticDimension
+        usersTable.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
     }
     

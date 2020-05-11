@@ -46,7 +46,7 @@ class GroupsTableViewCell: UITableViewCell {
             eventCreated?.idsGroups.append(self.idGroup!)
         }else{
             
-            if let firstIndex = eventCreated?.idsGroups.index(of: self.idGroup!) {
+            if let firstIndex = eventCreated?.idsGroups.firstIndex(of: self.idGroup!) {
                 
                 eventCreated?.idsGroups.remove(at: firstIndex)
             }

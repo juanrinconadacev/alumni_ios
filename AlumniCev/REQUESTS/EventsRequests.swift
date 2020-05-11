@@ -21,7 +21,7 @@ func requestDeleteEvent(id:Int, action: @escaping ()->()){
     ]
     print(parameters)
     
-    Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
@@ -74,7 +74,7 @@ func createEventRequest(title:String, description:String, idType:Int, idGroup:[I
         "Accept": "application/json"
     ]
     
-    Alamofire.upload(multipartFormData: { multipartFormData in
+    AF.upload(multipartFormData: { multipartFormData in
         
         for (key, value) in parameters {
             multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
@@ -202,7 +202,7 @@ func requestEvent(id:Int, action: @escaping () -> ()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url, method: .get, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             

@@ -38,7 +38,7 @@ class CreateEventPageViewController: UIPageViewController, UIPageViewControllerD
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = pages.index(of: firstViewController) else {
+            let firstViewControllerIndex = pages.firstIndex(of: firstViewController) else {
                 return 0
         }
         
@@ -46,7 +46,7 @@ class CreateEventPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.index(of: viewController) else { return nil }
+        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
         
@@ -58,7 +58,7 @@ class CreateEventPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.index(of: viewController) else { return nil }
+        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
         
         let nextIndex = viewControllerIndex + 1
         
@@ -93,7 +93,7 @@ class CreateEventPageViewController: UIPageViewController, UIPageViewControllerD
     func goNextPage(fowardTo position: Int) {
         let viewController = self.pages[position]
         setViewControllers([viewController], direction:
-            UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
     }
 
 }

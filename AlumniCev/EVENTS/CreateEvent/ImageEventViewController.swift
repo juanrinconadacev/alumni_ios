@@ -107,7 +107,7 @@ class ImageEventViewController: UIViewController, UIImagePickerControllerDelegat
             // alert para ir a ajustes
             let alert = UIAlertController(title: "Se necesitan permisos", message: "Se necesitan permisos para acceder a la galeria", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ir a ajustes", style: .default, handler: { (nil) in
-                UIApplication.shared.open(NSURL(string:UIApplicationOpenSettingsURLString)! as URL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }))
             alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
             
@@ -155,7 +155,7 @@ class ImageEventViewController: UIViewController, UIImagePickerControllerDelegat
             let alert = UIAlertController(title: "Se necesitan permisos", message: "Se necesitan permisos para acceder a la galeria", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Ir a ajustes", style: .destructive, handler: { (nil) in
-                UIApplication.shared.open(NSURL(string:UIApplicationOpenSettingsURLString)! as URL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }))
             present(alert, animated: true)
             
@@ -182,7 +182,7 @@ class ImageEventViewController: UIViewController, UIImagePickerControllerDelegat
     
     func openCamera(){
         picker!.allowsEditing = false
-        picker!.sourceType = UIImagePickerControllerSourceType.camera
+        picker!.sourceType = UIImagePickerController.SourceType.camera
         present(picker!, animated: true, completion: nil)
     }
     
@@ -204,7 +204,7 @@ class ImageEventViewController: UIViewController, UIImagePickerControllerDelegat
     func openGallary()
     {
         picker!.allowsEditing = false
-        picker!.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(picker!, animated: true, completion: nil)
     }
     
@@ -236,14 +236,24 @@ class ImageEventViewController: UIViewController, UIImagePickerControllerDelegat
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         
-        eventCreated?.imageEvent = UIImageJPEGRepresentation(chosenImage, 0.1)
+        eventCreated?.imageEvent = chosenImage.jpegData(compressionQuality: 0.1)
         UIImageWriteToSavedPhotosAlbum(chosenImage, nil, nil, nil);
         dismiss(animated: true, completion: nil)
 
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

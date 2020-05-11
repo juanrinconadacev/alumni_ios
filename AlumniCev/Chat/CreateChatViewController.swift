@@ -41,7 +41,7 @@ class CreateChatViewController: UIViewController, UITableViewDelegate, UITableVi
             //Añadir imagen
             let remoteImageURL = URL(string: (userstochat[indexPath.row]["photo"] as? String)!)!
             
-            Alamofire.request(remoteImageURL).responseData { (response) in
+            AF.request(remoteImageURL).responseData { (response) in
                 if response.error == nil {
                     print(response.result)
                     
@@ -61,7 +61,7 @@ class CreateChatViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Iniciar nuevo chat", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Iniciar nuevo chat", message: "", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (nil) in
             //request create chat with id user
             let id_user = self.userstochat[indexPath.row]["id"] as? String

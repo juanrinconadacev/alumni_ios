@@ -19,7 +19,7 @@ func messagesRequest(id_chat:String?, action: @escaping (_ messages:[Dictionary<
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
             switch response.result {
@@ -53,7 +53,7 @@ func sendMessageRequest(id_chat:String,description:String, action: @escaping (_ 
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
@@ -79,7 +79,7 @@ func getUsersToChat(action: @escaping (_ messages:[Dictionary<String,Any>]?)->()
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
@@ -122,7 +122,7 @@ func createChatRequesst(id_user:String, action: @escaping (_ message:Dictionary<
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
@@ -150,7 +150,7 @@ func getChatsRequest(action: @escaping (_ messages:[Dictionary<String,Any>]?)->(
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>

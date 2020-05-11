@@ -217,7 +217,7 @@
         
         let parameters: Parameters = ["email":email,"password":password, "lon": self.lon , "lat": self.lat]
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{response in
+        AF.request(url, method: .post, parameters: parameters).responseJSON{response in
             
             var arrayResult = response.result.value as! Dictionary<String, Any>
             let alert = CPAlertViewController()

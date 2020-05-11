@@ -201,12 +201,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let url = "http://192.168.6.167/ProyectoAlumni/public/index.php/api/login"
         let parameters: Parameters = ["email":email,"password":password, "lon": self.lon , "lat": self.lat]
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{response in
+        AF.request(url, method: .post, parameters: parameters).responseJSON{response in
             
-            if (response.result.value != nil)
+            if (response.value. != nil)
             {
                 
-                var arrayResult = response.result.value as! Dictionary<String, Any>
+                var arrayResult = response.data as! Dictionary<String, Any>
                 print(arrayResult)
                 let alert = CPAlertViewController()
                 

@@ -50,7 +50,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //Add Image
             let remoteImageURL = URL(string: (user["photo"] as? String)!)!
             
-            Alamofire.request(remoteImageURL).responseData { (response) in
+            AF.request(remoteImageURL).responseData { (response) in
                 if response.error == nil {
                     print(response.result)
                     

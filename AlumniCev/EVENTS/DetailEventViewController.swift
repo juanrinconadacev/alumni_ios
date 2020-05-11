@@ -187,7 +187,7 @@ class DetailEventViewController: UIViewController{
     @IBAction func opendURL(_ sender: Any) {
         
         if let url = URL(string: (events[idReceived]["url"] as? String)!) {
-            UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]))
         }
         
     }
@@ -271,7 +271,7 @@ class DetailEventViewController: UIViewController{
         let remoteImageURL = URL(string: url)!
         
         // Use Alamofire to download the image
-        Alamofire.request(remoteImageURL).responseData { (response) in
+        AF.request(remoteImageURL).responseData { (response) in
             if response.error == nil {
                 print(response.result)
                 
@@ -300,7 +300,7 @@ class DetailEventViewController: UIViewController{
         let remoteImageURL = URL(string: url)!
         
         // Use Alamofire to download the image
-        Alamofire.request(remoteImageURL).responseData { (response) in
+        AF.request(remoteImageURL).responseData { (response) in
             if response.error == nil {
                 print(response.result)
                 
@@ -474,4 +474,9 @@ class DetailEventViewController: UIViewController{
 
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

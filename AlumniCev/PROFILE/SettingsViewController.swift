@@ -175,12 +175,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
                 if textFieldNueva!.text != textFieldRepetirNueva!.text{
                     self.present(alert!, animated: true, completion: nil)
                     alert?.message = "wrongRepeatPassword".localized()
-                    alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.red]), forKey: "attributedMessage")
+                    alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedMessage")
                 }else{
                     if (textFieldNueva!.text?.count)! < 5 || (textFieldNueva!.text?.count)! > 12{
                         self.present(alert!, animated: true, completion: nil)
                         alert?.message = "lengthPassword".localized()
-                        alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.red]), forKey: "attributedMessage")
+                        alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedMessage")
                     }else{
                         
                         self.lastPassword = (textFieldAntigua!.text)!
@@ -193,7 +193,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             }else{
                 self.present(alert!, animated: true, completion: nil)
                 alert?.message = "allFieldsRequired".localized()
-                alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.red]), forKey: "attributedMessage")
+                alert?.setValue(NSAttributedString(string: (alert?.message)!, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedMessage")
             }
             
         }))
@@ -224,7 +224,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }, fail: {
             self.present(alert, animated: true, completion: nil)
             alert.message = "oldPass".localized()
-            alert.setValue(NSAttributedString(string: (alert.message)!, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedStringKey.foregroundColor : UIColor.red]), forKey: "attributedMessage")
+            alert.setValue(NSAttributedString(string: (alert.message)!, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedMessage")
         })
     }
     
@@ -272,7 +272,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             //Alert to go to settings
             let alert = UIAlertController(title: "Se necesitan permisos", message: "Se necesitan permisos para acceder a la galeria", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ir a ajustes", style: .default, handler: { (nil) in
-                UIApplication.shared.open(NSURL(string:UIApplicationOpenSettingsURLString)! as URL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }))
             alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
             
@@ -303,7 +303,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             let alert = UIAlertController(title: "Se necesitan permisos", message: "Se necesitan permisos para acceder a la galeria", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Ir a ajustes", style: .destructive, handler: { (nil) in
-                UIApplication.shared.open(NSURL(string:UIApplicationOpenSettingsURLString)! as URL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }))
             present(alert, animated: true)
             
@@ -316,13 +316,13 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     func openCamera(){
         picker!.allowsEditing = false
-        picker!.sourceType = UIImagePickerControllerSourceType.camera
+        picker!.sourceType = UIImagePickerController.SourceType.camera
         present(picker!, animated: true, completion: nil)
     }
     func openGallary()
     {
         picker!.allowsEditing = false
-        picker!.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(picker!, animated: true, completion: nil)
     }
     
@@ -343,11 +343,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         imgProfile.contentMode = .scaleAspectFit
         imgProfile.image = chosenImage
         
-        photo = UIImageJPEGRepresentation(chosenImage, 0.1)!
+        photo = chosenImage.jpegData(compressionQuality: 0.1)!
         
         dismiss(animated: true, completion: nil)
     }
@@ -441,4 +441,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         spinner.stopAnimating()
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

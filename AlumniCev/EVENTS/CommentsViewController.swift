@@ -145,7 +145,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         let remoteImageURL = URL(string: url)!
         
         // Use Alamofire to download the image
-        Alamofire.request(remoteImageURL).responseData { (response) in
+        AF.request(remoteImageURL).responseData { (response) in
             if response.error == nil {
                 print(response.result)
                 

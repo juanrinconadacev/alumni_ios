@@ -18,7 +18,7 @@ class DetailEventNavigationViewController: UINavigationController {
         self.navigationBar.barTintColor = UIColor(named: "Turques")
         self.navigationBar.tintColor = .white
         self.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         
         // Do any additional setup after loading the view.

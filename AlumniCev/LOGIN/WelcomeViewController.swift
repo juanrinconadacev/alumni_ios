@@ -117,7 +117,7 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate,U
     func openGallary()
     {
         picker!.allowsEditing = false
-        picker!.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker!.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(picker!, animated: true, completion: nil)
     }
     
@@ -159,11 +159,11 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate,U
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         newProfileImage.contentMode = .scaleAspectFit
         newProfileImage.image = chosenImage
         
-        let photo:Data = UIImageJPEGRepresentation(chosenImage, 0.1)!
+        let photo:Data = chosenImage.jpegData(compressionQuality: 0.1)!
         
         saveDataInUserDefaults(value: photo.base64EncodedString(), key: "photo")
         
@@ -214,4 +214,9 @@ class WelcomeViewController: UIViewController, UIImagePickerControllerDelegate,U
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

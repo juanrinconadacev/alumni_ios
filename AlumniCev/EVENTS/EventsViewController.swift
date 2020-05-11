@@ -237,7 +237,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         withoutResults.isHidden = true
         
-        tableEvents.rowHeight = UITableViewAutomaticDimension
+        tableEvents.rowHeight = UITableView.automaticDimension
         tableEvents.estimatedRowHeight = 209
         
         requestEvents(type: idType, action: {

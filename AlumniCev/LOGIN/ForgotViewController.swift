@@ -109,7 +109,7 @@ class ForgotViewController: UIViewController {
                 
                 SwiftSpinner.show("...")
                 
-                Alamofire.request(url!, method: .get, parameters: parameters).responseJSON{response in
+                AF.request(url!, method: .get, parameters: parameters).responseJSON{response in
                     
                     var arrayResult = response.result.value as! Dictionary<String, Any>
                     let alert = CPAlertViewController()
