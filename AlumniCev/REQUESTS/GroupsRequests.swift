@@ -58,7 +58,7 @@ func requestGroups(action: @escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url, method: .get, headers: headers).responseJSON{response in
+    AF.request(url, method: .get, headers: headers).responseJSON{response in
         
         if (response.result.value != nil){
             
