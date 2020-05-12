@@ -72,7 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         textfield.layer.addSublayer(border)
         textfield.layer.masksToBounds = true
         
-        textfield.setValue(UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5), forKeyPath: "_placeholderLabel.textColor")
+//        textfield.setValue(UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5), forKeyPath: "_placeholderLabel.textColor")
         
     }
     
@@ -203,7 +203,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         AF.request(url, method: .post, parameters: parameters).responseJSON{response in
             
-            if (response.value. != nil)
+            if (response.value != nil)
             {
                 
                 var arrayResult = response.data as! Dictionary<String, Any>
@@ -259,7 +259,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             let remoteImageURL = URL(string: (arrayUser["photo"] as? String)!)!
                             
                             // Use Alamofire to download the image
-                            Alamofire.request(remoteImageURL).responseData { (response) in
+                            AF.request(remoteImageURL).responseData { (response) in
                                 if response.error == nil {
                                     if let data = response.data {
                                         saveDataInUserDefaults(value: data.base64EncodedString(), key: "photo")

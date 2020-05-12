@@ -21,11 +21,11 @@ func requestAllUsers(action: @escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url, method: .get, headers: headers).responseJSON{response in
+    AF.request(url, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             print("la lista de usuarios essss.:::")
             print(arrayResult)
             
@@ -59,10 +59,10 @@ func requestFriends(action: @escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            var arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -93,15 +93,15 @@ func requestUserById(id:Int, action: @escaping ()->()){
         "Authorization": token!,
         "Accept": "application/json"
     ]
-    Alamofire.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
-        if (response.result.value != nil){
+    AF.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 switch arrayResult["code"] as! Int{
                 case 200:
-                    var arrayData = arrayResult["data"] as! Dictionary<String,Any>
+                    let arrayData = arrayResult["data"] as! Dictionary<String,Any>
                     friend = arrayData["friend"] as? Dictionary<String,Any>
                     user = arrayData["user"] as? Dictionary<String,Any>
                     privacityUser = arrayData["privacity"] as? Dictionary<String,String>
@@ -126,9 +126,9 @@ func requestRequests(action: @escaping ()->(), notRequests: @escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, headers: headers).responseJSON{response in
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+    AF.request(url!, method: .get, headers: headers).responseJSON{response in
+        if (response.value != nil){
+            var arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 switch arrayResult["code"] as! Int{
@@ -167,11 +167,11 @@ func requestChangePassword(lastPassword:String, password:String, action: @escapi
     let parameters: Parameters = ["lastpassword": lastPassword,
                                   "password":password]
     
-    Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -204,10 +204,10 @@ func sendRequestFriend(id_user:Int, action: @escaping (_ message:String, _ code:
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -236,11 +236,11 @@ func requestResponseFriend(id_user:Int, type:Int, action:@escaping (_ message:St
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -269,11 +269,11 @@ func requestFindUser(search:String, action: @escaping ()->(), notusers:@escaping
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -309,11 +309,11 @@ func requestFindFriends(search:String, action: @escaping ()->(), notusers:@escap
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -348,11 +348,11 @@ func requestDeleteFriend(id_user:Int, action: @escaping (_ message:String, _ cod
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -379,10 +379,10 @@ func requestCancelRequest(id_user:Int, action: @escaping  (_ message:String, _ c
         "Authorization": token!,
         "Accept": "application/json"
     ]
-    Alamofire.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters:parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:
@@ -441,60 +441,60 @@ func requestEditUser(id:Int,email:String?, name:String?, phone:String?, birthday
         "Accept": "application/json"
     ]
     
-    Alamofire.upload(multipartFormData: { multipartFormData in
-        
-        for (key, value) in parameters {
-            multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
-            
-        }
-        if photo != nil{
-            multipartFormData.append(photo!, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
-        }
-        
-    },
-                     
-                     to: url!,
-                     headers:headers,
-                     
-                     encodingCompletion: { encodingResult in
-                        
-                        switch encodingResult {
-                            
-                        case .success(let upload, _, _):
-                            upload.responseJSON { response in
-                                
-                                if (response.result.value != nil){
-                                    
-                                    var arrayResult = response.result.value as! Dictionary<String, Any>
-                                    
-                                    if response.result.value != nil {
-                                        
-                                        let code = arrayResult["code"] as! Int
-                                        
-                                        switch code{
-                                        case 200:
-                                            action()
-                                            print("Usuario editado")
-                                        case 400:
-                                            
-                                            fail()
-                                            print(arrayResult)
-                                            
-                                        default:
-                                            
-                                            fail()
-                                            print(arrayResult)
-                                            
-                                        }
-                                        
-                                    }
-                                }
-                                
-                            }
-                        case .failure(let encodingError):
-                            fail()
-                            print(encodingError)
-                            // your implementation
-                        }
-    })
+//    AF.upload(multipartFormData: { multipartFormData in
+//
+//        for (key, value) in parameters {
+//            multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
+//
+//        }
+//        if photo != nil{
+//            multipartFormData.append(photo!, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+//        }
+//
+//    },
+//
+//                     to : url!,
+//                     headers:headers,
+//
+//                     encodingCompletion: { encodingResult in
+//
+//                        switch encodingResult {
+//
+//                        case .success(let upload, _, _):
+//                            upload.responseJSON { response in
+//
+//                                if (response.result.value != nil){
+//
+//                                    var arrayResult = response.result.value as! Dictionary<String, Any>
+//
+//                                    if response.result.value != nil {
+//
+//                                        let code = arrayResult["code"] as! Int
+//
+//                                        switch code{
+//                                        case 200:
+//                                            action()
+//                                            print("Usuario editado")
+//                                        case 400:
+//
+//                                            fail()
+//                                            print(arrayResult)
+//
+//                                        default:
+//
+//                                            fail()
+//                                            print(arrayResult)
+//
+//                                        }
+//
+//                                    }
+//                                }
+//
+//                            }
+//                        case .failure(let encodingError):
+//                            fail()
+//                            print(encodingError)
+//                            // your implementation
+//                        }
+//    })
 }

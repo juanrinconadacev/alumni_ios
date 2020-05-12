@@ -20,8 +20,8 @@ func messagesRequest(id_chat:String?, action: @escaping (_ messages:[Dictionary<
     ]
     
     AF.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 
@@ -55,8 +55,8 @@ func sendMessageRequest(id_chat:String,description:String, action: @escaping (_ 
     
     AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 action(arrayResult["message"] as! String)
@@ -81,8 +81,8 @@ func getUsersToChat(action: @escaping (_ messages:[Dictionary<String,Any>]?)->()
     
     AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 
@@ -124,8 +124,8 @@ func createChatRequesst(id_user:String, action: @escaping (_ message:Dictionary<
     
     AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            var arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
 
@@ -152,8 +152,8 @@ func getChatsRequest(action: @escaping (_ messages:[Dictionary<String,Any>]?)->(
     
     AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            var arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 

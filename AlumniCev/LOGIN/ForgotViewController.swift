@@ -111,7 +111,7 @@ class ForgotViewController: UIViewController {
                 
                 AF.request(url!, method: .get, parameters: parameters).responseJSON{response in
                     
-                    var arrayResult = response.result.value as! Dictionary<String, Any>
+                    let arrayResult = response.value as! Dictionary<String, Any>
                     let alert = CPAlertViewController()
                     
                     switch response.result {

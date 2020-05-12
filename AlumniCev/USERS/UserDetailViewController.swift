@@ -105,7 +105,7 @@ class UserDetailViewController: UIViewController, MFMailComposeViewControllerDel
         if user!["photo"] as? String != nil
         {
             let remoteImageURL = URL(string: (user!["photo"] as? String)!)!
-            Alamofire.request(remoteImageURL).responseData
+            AF.request(remoteImageURL).responseData
                 { (response) in
                 if response.error == nil {
                     print(response.result)
