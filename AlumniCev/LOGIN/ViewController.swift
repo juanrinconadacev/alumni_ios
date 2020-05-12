@@ -26,6 +26,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var lon:Float = 0.0
     var lat:Float = 0.0
+//    Poner esta variable en false para desactivar el falseo de login
+    let debug = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,124 +199,131 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func createLoginRequest(email:String, password:String){
         
         //let url = URL(string: URL_GENERAL + "users/login.json")
-        
-        let url = "http://192.168.6.167/ProyectoAlumni/public/index.php/api/login"
-        let parameters: Parameters = ["email":email,"password":password, "lon": self.lon , "lat": self.lat]
-        
-        AF.request(url, method: .post, parameters: parameters).responseJSON{response in
+        if(!debug){
+            let url = "http://192.168.6.167/ProyectoAlumni/public/index.php/api/login"
+            let parameters: Parameters = ["email":email,"password":password, "lon": self.lon , "lat": self.lat]
             
-            if (response.value != nil)
-            {
+            AF.request(url, method: .post, parameters: parameters).responseJSON{response in
                 
-                var arrayResult = response.data as! Dictionary<String, Any>
-                print(arrayResult)
-                let alert = CPAlertViewController()
-                
-                switch response.result {
-                case .success:
-                    switch arrayResult["code"] as! Int{
-                    case 200:
-                        var arrayData = arrayResult["data"] as! Dictionary<String,Any>
-                        var arrayUser = arrayData["user"] as! Dictionary<String,Any>
-                        var arrayPrivacity = arrayData["privacity"] as! Dictionary<String,Any>
-                        
-                        SwiftSpinner.hide()
-                        
-                        let alert = CPAlertViewController()
-                        // no se ha logeado ninguna vez
-                        if getDataInUserDefaults(key: "isLoged") == nil{
-                            alert.showSuccess(title: "correctLogin".localized(), message: "succesLogin".localized(), buttonTitle: "OK", action: nil)
-                        }
-                        
-                        
-                        saveDataInUserDefaults(value: "\(String(describing: arrayUser["id"]))" , key: "id")
-                        saveDataInUserDefaults(value: "\(String(describing: arrayUser["id_rol"]))" , key: "id_rol")
-                        
-                        saveDataInUserDefaults(value: arrayUser["email"] as! String, key: "email")
-                        saveDataInUserDefaults(value: arrayUser["password"] as! String, key: "password")
-                        saveDataInUserDefaults(value: arrayUser["name"] as! String, key: "name")
-                        saveDataInUserDefaults(value: arrayUser["username"] as! String, key: "username")
-                        
-                        saveDataInUserDefaults(value: "\(String(describing: arrayUser["phone"]))" , key: "phoneprivacity")
-                        saveDataInUserDefaults(value: "\(String(describing: arrayUser["localization"]))" , key: "localizationprivacity")
-                        
-                        
-                        
-                        
-                        if !(arrayUser["description"] is NSNull)  {
-                            saveDataInUserDefaults(value: arrayUser["description"]! as! String, key: "description")
-                        }else{
-                            clearDataInUserDefaults(key: "description")
-                        }
-                        
-                        if !(arrayUser["phone"] is NSNull)  {
+                if (response.value != nil)
+                {
+                    
+                    var arrayResult = response.data as! Dictionary<String, Any>
+                    print(arrayResult)
+                    let alert = CPAlertViewController()
+                    
+                    switch response.result {
+                    case .success:
+                        switch arrayResult["code"] as! Int{
+                        case 200:
+                            var arrayData = arrayResult["data"] as! Dictionary<String,Any>
+                            var arrayUser = arrayData["user"] as! Dictionary<String,Any>
+                            var arrayPrivacity = arrayData["privacity"] as! Dictionary<String,Any>
                             
-                            saveDataInUserDefaults(value: arrayUser["phone"]! as! String, key: "phone")
-                        }else{
-                            clearDataInUserDefaults(key: "phone")
-                        }
-                        
-                        if arrayUser["photo"] as? String != nil{
+                            SwiftSpinner.hide()
                             
-                            let remoteImageURL = URL(string: (arrayUser["photo"] as? String)!)!
-                            
-                            // Use Alamofire to download the image
-                            AF.request(remoteImageURL).responseData { (response) in
-                                if response.error == nil {
-                                    if let data = response.data {
-                                        saveDataInUserDefaults(value: data.base64EncodedString(), key: "photo")
-                                    }
-                                }
-                                
+                            let alert = CPAlertViewController()
+                            // no se ha logeado ninguna vez
+                            if getDataInUserDefaults(key: "isLoged") == nil{
+                                alert.showSuccess(title: "correctLogin".localized(), message: "succesLogin".localized(), buttonTitle: "OK", action: nil)
                             }
                             
-                        }else{
-                            clearDataInUserDefaults(key: "photo")
+                            
+                            saveDataInUserDefaults(value: "\(String(describing: arrayUser["id"]))" , key: "id")
+                            saveDataInUserDefaults(value: "\(String(describing: arrayUser["id_rol"]))" , key: "id_rol")
+                            
+                            saveDataInUserDefaults(value: arrayUser["email"] as! String, key: "email")
+                            saveDataInUserDefaults(value: arrayUser["password"] as! String, key: "password")
+                            saveDataInUserDefaults(value: arrayUser["name"] as! String, key: "name")
+                            saveDataInUserDefaults(value: arrayUser["username"] as! String, key: "username")
+                            
+                            saveDataInUserDefaults(value: "\(String(describing: arrayUser["phone"]))" , key: "phoneprivacity")
+                            saveDataInUserDefaults(value: "\(String(describing: arrayUser["localization"]))" , key: "localizationprivacity")
+                            
+                            
+                            
+                            
+                            if !(arrayUser["description"] is NSNull)  {
+                                saveDataInUserDefaults(value: arrayUser["description"]! as! String, key: "description")
+                            }else{
+                                clearDataInUserDefaults(key: "description")
+                            }
+                            
+                            if !(arrayUser["phone"] is NSNull)  {
+                                
+                                saveDataInUserDefaults(value: arrayUser["phone"]! as! String, key: "phone")
+                            }else{
+                                clearDataInUserDefaults(key: "phone")
+                            }
+                            
+                            if arrayUser["photo"] as? String != nil{
+                                
+                                let remoteImageURL = URL(string: (arrayUser["photo"] as? String)!)!
+                                
+                                // Use Alamofire to download the image
+                                AF.request(remoteImageURL).responseData { (response) in
+                                    if response.error == nil {
+                                        if let data = response.data {
+                                            saveDataInUserDefaults(value: data.base64EncodedString(), key: "photo")
+                                        }
+                                    }
+                                    
+                                }
+                                
+                            }else{
+                                clearDataInUserDefaults(key: "photo")
+                            }
+                            
+                            if arrayUser["lat"] as? String != nil && arrayUser["lon"] as? String != nil{
+                                saveDataInUserDefaults(value: arrayUser["lat"] as! String, key: "lat")
+                                saveDataInUserDefaults(value: arrayUser["lon"] as! String, key: "lon")
+                            }
+                            
+                            saveDataInUserDefaults(value: arrayData["token"] as! String, key: "token")
+                            
+                            saveDataInUserDefaults(value: "true", key: "isLoged")
+                            self.goToMain()
+                        case 500:
+                            // error del servidor
+                            SwiftSpinner.hide()
+                            if getDataInUserDefaults(key: "email") != nil {
+                                self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
+                            }
+                            alert.showError(title: ("Error al conectar con el servidor" ), buttonTitle: "OK")
+                            
+                        default:
+                            // cualquier error
+                            SwiftSpinner.hide()
+                            if getDataInUserDefaults(key: "email") != nil {
+                                self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
+                            }
+                            alert.showError(title: (arrayResult["message"] as! String), buttonTitle: "OK")
                         }
-                        
-                        if arrayUser["lat"] as? String != nil && arrayUser["lon"] as? String != nil{
-                            saveDataInUserDefaults(value: arrayUser["lat"] as! String, key: "lat")
-                            saveDataInUserDefaults(value: arrayUser["lon"] as! String, key: "lon")
-                        }
-                        
-                        saveDataInUserDefaults(value: arrayData["token"] as! String, key: "token")
-                        
-                        saveDataInUserDefaults(value: "true", key: "isLoged")
-                        self.goToMain()
-                    case 500:
-                        // error del servidor
+                    case .failure:
                         SwiftSpinner.hide()
                         if getDataInUserDefaults(key: "email") != nil {
                             self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
                         }
-                        alert.showError(title: ("Error al conectar con el servidor" ), buttonTitle: "OK")
-                        
-                    default:
-                        // cualquier error
-                        SwiftSpinner.hide()
-                        if getDataInUserDefaults(key: "email") != nil {
-                            self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
-                        }
-                        alert.showError(title: (arrayResult["message"] as! String), buttonTitle: "OK")
+                        alert.showError(title: String(describing: response.error), buttonTitle: "OK")
+                        print("Error :: \(String(describing: response.error))")
                     }
-                case .failure:
                     SwiftSpinner.hide()
+                }else{
+                    let alert = CPAlertViewController()
                     if getDataInUserDefaults(key: "email") != nil {
                         self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
                     }
-                    alert.showError(title: String(describing: response.error), buttonTitle: "OK")
-                    print("Error :: \(String(describing: response.error))")
+                    
+                    alert.showError(title: "No se puede conectar al servidor", buttonTitle: "OK")
                 }
-                SwiftSpinner.hide()
-            }else{
-                let alert = CPAlertViewController()
-                if getDataInUserDefaults(key: "email") != nil {
-                    self.emailLoginTextField.text = getDataInUserDefaults(key: "email")
-                }
-                
-                alert.showError(title: "No se puede conectar al servidor", buttonTitle: "OK")
             }
+        } else {
+            saveDataInUserDefaults(value: "" as! String, key: "token")
+            
+            saveDataInUserDefaults(value: "true", key: "isLoged")
+            self.goToMain()
         }
+        
     }
     
     // MARK:- Instantiate Main
