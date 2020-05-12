@@ -149,7 +149,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //Añadir imagen
                 let remoteImageURL = URL(string: (users![indexPath.row]["photo"] as? String)!)!
                 
-                Alamofire.request(remoteImageURL).responseData { (response) in
+                AF.request(remoteImageURL).responseData { (response) in
                     if response.error == nil {
                         print(response.result)
                         
@@ -185,7 +185,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //Añadir imagen
                 let remoteImageURL = URL(string: (users[indexPath.row]["photo"] as? String)!)!
 
-                Alamofire.request(remoteImageURL).responseData { (response) in
+                AF.request(remoteImageURL).responseData { (response) in
                     if response.error == nil {
                         print(response.result)
 
@@ -216,7 +216,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //Añadir imagen
                 let remoteImageURL = URL(string: (users![indexPath.row]["photo"] as? String)!)!
                 
-                Alamofire.request(remoteImageURL).responseData { (response) in
+                AF.request(remoteImageURL).responseData { (response) in
                     if response.error == nil {
                         print(response.result)
                         

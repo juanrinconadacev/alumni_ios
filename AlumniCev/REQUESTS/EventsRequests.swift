@@ -23,8 +23,8 @@ func requestDeleteEvent(id:Int, action: @escaping ()->()){
     
     AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+        if (response.value != nil){
+            let arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 
@@ -54,7 +54,7 @@ func requestDeleteEvent(id:Int, action: @escaping ()->()){
 func createEventRequest(title:String, description:String, idType:Int, idGroup:[Int], controller:UIViewController, lat:Float?, lon:Float?, image:Data?, urlEvent:String?){
     
     //let url = URL(string: URL_GENERAL + "events/create.json")
-    let url = "http://192.168.6.167/ProyectoAlumni/public/index.php/api/createevent"
+    let (url) = "http://192.168.6.167/ProyectoAlumni/public/index.php/api/createevent"
     
     var parameters: Parameters = ["title": title, "description": description, "id_type":idType]
     
@@ -74,68 +74,67 @@ func createEventRequest(title:String, description:String, idType:Int, idGroup:[I
         "Accept": "application/json"
     ]
     
-    AF.upload(multipartFormData: { multipartFormData in
-        
-        for (key, value) in parameters {
-            multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
-            
-        }
-        for value in idGroup{
-            let clave = "id_group[" + String(value) + "]"
-            print(clave)
-            let valor = String(value)
-            multipartFormData.append(String(describing: valor).data(using: .utf8)!, withName: clave)
-        }
-        
-        if image != nil{
-            multipartFormData.append(image!, withName: "image", fileName: "photo.jpeg", mimeType: "image/jpeg")
-        }
-        
-    },
-                     
-                     to: url,
-                     headers:headers,
-                     
-                     encodingCompletion: { encodingResult in
-                        
-                        switch encodingResult {
-                            
-                        case .success(let upload, _, _):
-                            upload.responseJSON { response in
-                                
-                                if (response.result.value != nil){
-                                    
-                                    var arrayResult = response.result.value as! Dictionary<String, Any>
-                                    
-                                    if let result = response.result.value {
-                                        
-                                        print(result)
-                                        
-                                        let code = arrayResult["code"] as! Int
-                                        
-                                        switch code{
-                                        case 200:
-                                            events = arrayResult["data"] as! [[String:Any]]
-                                            
-                                            (controller as! LocalizationCreateEventViewController).createAlert(type:"success", title:"eventCreated".localized(), message: "eventCreatedSuccess".localized())
-                                        case 400:
-                                            print(arrayResult)
-                                            
-                                        default:
-                                            print(arrayResult)
-                                            
-                                        }
-                                        
-                                    }
-                                }
-                                
-                            }
-                        case .failure(let encodingError):
-                            print(encodingError)
-                            // your implementation
-                        }
-    })
-    
+//    AF.upload(multipartFormData: { multipartFormData in
+//        
+//        for (key, value) in parameters {
+//            multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
+//            
+//        }
+//        for value in idGroup{
+//            let clave = "id_group[" + String(value) + "]"
+//            print(clave)
+//            let valor = String(value)
+//            multipartFormData.append(String(describing: valor).data(using: .utf8)!, withName: clave)
+//        }
+//        
+//        if image != nil{
+//            multipartFormData.append(image!, withName: "image", fileName: "photo.jpeg", mimeType: "image/jpeg")
+//        }
+//        
+//    },
+//                     
+//                 to: url,
+//                headers:headers,
+//                     
+//                     encodingCompletion: { encodingResult in
+//                        
+//                        switch encodingResult {
+//                            
+//                        case .success(let upload, _, _):
+//                            upload.responseJSON { response in
+//                                
+//                                if (response.result.value != nil){
+//                                    
+//                                    var arrayResult = response.result.value as! Dictionary<String, Any>
+//                                    
+//                                    if let result = response.result.value {
+//                                        
+//                                        print(result)
+//                                        
+//                                        let code = arrayResult["code"] as! Int
+//                                        
+//                                        switch code{
+//                                        case 200:
+//                                            events = arrayResult["data"] as! [[String:Any]]
+//                                            
+//                                            (controller as! LocalizationCreateEventViewController).createAlert(type:"success", title:"eventCreated".localized(), message: "eventCreatedSuccess".localized())
+//                                        case 400:
+//                                            print(arrayResult)
+//                                            
+//                                        default:
+//                                            print(arrayResult)
+//                                            
+//                                        }
+//                                        
+//                                    }
+//                                }
+//                            }
+//                        case .failure(let encodingError):
+//                            print(encodingError)
+//                            // your implementation
+//                        }
+//    })
+//    
 }
 
 func requestEvents(type:Int, action: @escaping ()->(), notResults: @escaping ()->()){
@@ -151,11 +150,11 @@ func requestEvents(type:Int, action: @escaping ()->(), notResults: @escaping ()-
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url, method: .get, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             print("la respuesta es::::::::")
             print(arrayResult)
             
@@ -204,9 +203,9 @@ func requestEvent(id:Int, action: @escaping () -> ()){
     
     AF.request(url, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             print(response)
             
@@ -241,11 +240,11 @@ func requestFindEvents(search:String, type:Int, controller:UIViewController){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:

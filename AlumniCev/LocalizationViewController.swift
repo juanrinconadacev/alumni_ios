@@ -64,20 +64,22 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
                 
             case .restricted, .denied:
                 
-                let alert = UIAlertController(title: "Localización necesaria", message: "Es necesario acceder a la localización", preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
-                    UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
-                    )
-                }))
+                print ("restricted")
+//                let alert = UIAlertController(title: "Localización necesaria", message: "Es necesario acceder a la localización", preferredStyle: .alert)
+//
+//                alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
+//                    UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
+//                    )
+//                }))
+//
+//                alert.addAction(UIAlertAction(title: "No quiero permitir localización", style: .cancel, handler: {(alert) in
+//                    self.mapRoute.removeOverlays(self.mapRoute.overlays)
+//                    self.setMark()
+//                    self.segmentedTransport.isHidden = true
+//                }))
                 
-                alert.addAction(UIAlertAction(title: "No quiero permitir localización", style: .cancel, handler: {(alert) in
-                    self.mapRoute.removeOverlays(self.mapRoute.overlays)
-                    self.setMark()
-                    self.segmentedTransport.isHidden = true
-                }))
-                
-                self.present(alert, animated: true)
+//                self.present(alert, animated: true)
                 
             case .authorizedAlways, .authorizedWhenInUse:
                 self.segmentedTransport.isHidden = false
@@ -89,11 +91,11 @@ class LocalizationViewController: UIViewController, MKMapViewDelegate, CLLocatio
             
             let alert = UIAlertController(title: "Localización necesaria", message: "Es necesario acceder a la localización", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
-                UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
-                )
-            }))
-            
+//            alert.addAction(UIAlertAction(title: "OK, ir a ajustes", style: .default, handler: { (alert) in
+//                UIApplication.shared.openconvertToUIApplicationOpenExternalURLOptionsKeyDictionary(()URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil
+//                )
+//            }))
+//            
             alert.addAction(UIAlertAction(title: "No quiero permitir localización", style: .cancel, handler: {(alert) in
                 self.mapRoute.removeOverlays(self.mapRoute.overlays)
                 self.setMark()

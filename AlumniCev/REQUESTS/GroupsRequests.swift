@@ -22,9 +22,9 @@ func requestTypes(controller:UIViewController){
     
     AF.request(url, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
         
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             print("Request Groups types")
             print(arrayResult)
             
@@ -60,9 +60,9 @@ func requestGroups(action: @escaping ()->()){
     
     AF.request(url, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             print("imprimiendo data")
             print(arrayResult["data"]!)
             var arrayData = arrayResult["data"]! as! Dictionary<String,Any>
@@ -100,11 +100,11 @@ func requestGroupsbyUser (action: @escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .get, headers: headers).responseJSON{response in
+    AF.request(url!, method: .get, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             var arrayData = arrayResult["data"]! as! Dictionary<String,Any>
             
             switch response.result {

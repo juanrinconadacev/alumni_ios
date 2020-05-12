@@ -26,9 +26,9 @@ class TitleEventViewController: UIViewController, UITextViewDelegate {
 //        addDescriptionLbl.text = "addDescription".localized()
         
         descriptionTxF.toolbarPlaceholder = "Añade la descripción..."
-        descriptionTxF.placeholderText = "Añade la descripción..."
+       // descriptionTxF.placeholderText = "Añade la descripción..."
         titleTxtView.toolbarPlaceholder = "Añade el título..."
-        titleTxtView.placeholderText = "Añade el título..."
+        //titleTxtView.placeholderText = "Añade el título..."
         
         setStyle()
     }

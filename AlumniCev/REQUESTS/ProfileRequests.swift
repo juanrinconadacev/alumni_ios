@@ -21,11 +21,11 @@ func requestProfile(){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(user!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(user!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
         
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             
             switch response.result {
             case .success:

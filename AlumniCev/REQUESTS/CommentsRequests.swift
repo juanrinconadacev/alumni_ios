@@ -22,11 +22,11 @@ func requestCreateComment(title:String, description:String, id_event:Int, action
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             switch response.result {
             case .success:
                 switch arrayResult["code"] as! Int{
@@ -60,11 +60,11 @@ func requestDeleteComment(id_comment:Int, action:@escaping ()->()){
         "Accept": "application/json"
     ]
     
-    Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
+    AF.request(url!, method: .post, parameters: parameters, headers: headers).responseJSON{response in
         
-        if (response.result.value != nil){
+        if (response.value != nil){
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            var arrayResult = response.value as! Dictionary<String, Any>
             let alert = CPAlertViewController()
             switch response.result {
             case .success:
