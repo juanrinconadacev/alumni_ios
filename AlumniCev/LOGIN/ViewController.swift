@@ -203,7 +203,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         AF.request(url, method: .post, parameters: parameters).responseJSON{response in
             
-            if (response.value. != nil)
+            if (response.value != nil)
             {
                 
                 var arrayResult = response.data as! Dictionary<String, Any>

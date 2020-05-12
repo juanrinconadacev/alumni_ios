@@ -20,7 +20,7 @@ func messagesRequest(id_chat:String?, action: @escaping (_ messages:[Dictionary<
     ]
     
     AF.request(url!, method: .get, parameters: parameters, headers: headers).responseJSON{response in
-        if (response.result.value != nil){
+        if (response.value != nil){
             var arrayResult = response.result.value as! Dictionary<String, Any>
             switch response.result {
             case .success:

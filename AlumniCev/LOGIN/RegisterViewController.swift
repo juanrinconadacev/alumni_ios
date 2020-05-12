@@ -171,9 +171,9 @@
         
         SwiftSpinner.show("...")
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{response in
+        AF.request(url, method: .post, parameters: parameters).responseJSON{response in
             
-            var arrayResult = response.result.value as! Dictionary<String, Any>
+            let arrayResult = response.value as! Dictionary<String, Any>
             let alert = CPAlertViewController()
             
             switch response.result {

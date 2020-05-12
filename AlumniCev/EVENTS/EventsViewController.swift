@@ -99,7 +99,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             //Añadir imagen
             let remoteImageURL = URL(string: (events[indexPath.row]["image"] as? String)!)!
             
-            Alamofire.request(remoteImageURL).responseData { (response) in
+            AF.request(remoteImageURL).responseData { (response) in
                 if response.error == nil {
                     print(response.result)
                     
