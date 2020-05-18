@@ -70,7 +70,7 @@ class RecoverViewController: UIViewController {
         textfield.layer.addSublayer(border)
         textfield.layer.masksToBounds = true
         
-        textfield.setValue(UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5), forKeyPath: "_placeholderLabel.textColor")
+//        textfield.setValue(UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5), forKeyPath: "_placeholderLabel.textColor")
         
     }
     
