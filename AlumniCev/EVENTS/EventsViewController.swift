@@ -1,10 +1,4 @@
-//
-//  EventsViewController.swift
-//  AlumniCev
-//
-//  Created by Daniel Plata on 22/1/18.
-//  Copyright © 2018 Victor Serrano. All rights reserved.
-//
+
 
 import UIKit
 import SimpleAnimation
